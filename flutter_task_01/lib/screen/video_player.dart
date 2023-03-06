@@ -19,6 +19,7 @@ class _Video_PlayerState extends State<Video_Player> {
   Future<void> initializeVideoPlayer(url) async {
     print("Function");
     videoPlayerController = VideoPlayerController.asset(url);
+
     await Future.wait([videoPlayerController!.initialize()]);
     chewieController = ChewieController(
       videoPlayerController: videoPlayerController!,
@@ -30,7 +31,9 @@ class _Video_PlayerState extends State<Video_Player> {
   @override
   void initState() {
     super.initState();
-    initializeVideoPlayer('assets/timers.mp4');
+
+    initializeVideoPlayer('assets/timers.mp4')
+        .whenComplete(() => setState(() {}));
   }
 
   @override
