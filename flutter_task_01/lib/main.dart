@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_task_01/screen/image_picker.dart';
-
 import 'package:sizer/sizer.dart';
 
-import 'screen/LoginScreen.dart';
-import 'screen/datePicker.dart';
+import 'screen/video_player.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,9 +14,9 @@ class MyApp extends StatelessWidget {
     return Sizer(
       builder: (context, orientation, deviceType) {
         return MaterialApp(
-            theme: ThemeData(primaryColor: Colors.black),
+            theme: ThemeData(useMaterial3: false),
             debugShowCheckedModeBanner: false,
-            home: image_picker());
+            home: Video_Player());
       },
     );
   }
