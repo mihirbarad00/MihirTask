@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
+import 'screen/video_exmpale.dart';
 import 'screen/video_player.dart';
 
 void main() {
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
         return MaterialApp(
             theme: ThemeData(useMaterial3: false),
             debugShowCheckedModeBanner: false,
-            home: Video_Player());
+            home: videosa());
       },
     );
   }
