@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_task_01/screen/file_video.dart';
 import 'package:sizer/sizer.dart';
 
+import 'screen/file_upload.dart';
 import 'screen/video_exmpale.dart';
 import 'screen/video_player.dart';
 
@@ -15,9 +17,9 @@ class MyApp extends StatelessWidget {
     return Sizer(
       builder: (context, orientation, deviceType) {
         return MaterialApp(
-            theme: ThemeData(useMaterial3: false),
+            theme: ThemeData(useMaterial3: false, primaryColor: Colors.amber),
             debugShowCheckedModeBanner: false,
-            home: videosa());
+            home: file_upload());
       },
     );
   }
