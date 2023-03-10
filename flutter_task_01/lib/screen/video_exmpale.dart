@@ -1,65 +1,154 @@
+import 'dart:convert';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:video_player/video_player.dart';
+import 'package:http/http.dart' as http;
 
-class videosa extends StatelessWidget {
-  List? _controllerlink = [
-    VideoPlayerController.network(
-        'https://filesamples.com/samples/video/mp4/sample_640x360.mp4'),
-    VideoPlayerController.asset('assets/timers.mp4'),
-    VideoPlayerController.network(
-        'https://filesamples.com/samples/video/mp4/sample_640x360.mp4'),
-    VideoPlayerController.asset('assets/test1.mp4'),
-    VideoPlayerController.network(
-        'https://filesamples.com/samples/video/mp4/sample_640x360.mp4'),
-    VideoPlayerController.asset('assets/testa.mp4'),
-  ];
+import '../pageviewExmple.dart';
+import 'model.dart';
+
+Future<List<Model>> getData() async {
+  final response = await http.get(Uri.parse(
+      'https://recursing-gauss.103-175-163-209.plesk.page/api/Status_app/hanuman_video'));
+  // var data = jsonDecode(response.body);
+  if (response.statusCode == 200) {
+    List jsonResponce = jsonDecode(response.body);
+    return jsonResponce.map((data) => new Model.fromJson(data)).toList();
+  } else {
+    throw Exception('server not found');
+  }
+}
+
+class videosa extends StatefulWidget {
+  @override
+  State<videosa> createState() => _videosaState();
+}
+
+class _videosaState extends State<videosa> {
+  // List? _controllerlink = [
 
   CarouselController _nextvideo = CarouselController();
+  late Future<List<Model>> fetchlist;
+
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    fetchlist = getData();
+  }
+
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Color.fromARGB(255, 156, 128, 23),
-          title: Text("Videos gallery"),
+    return Scaffold(
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        centerTitle: true,
+        flexibleSpace: Container(
+          decoration: BoxDecoration(
+            gradient: const LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: <Color>[
+                  Color.fromARGB(255, 70, 62, 25),
+                  Color.fromARGB(255, 143, 121, 22)
+                ]),
+          ),
         ),
-        body: Column(
-          children: [
-            Expanded(
-                child: ListView.builder(
-              physics: ScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
-              scrollDirection: Axis.vertical,
-              shrinkWrap: true,
-              itemCount: _controllerlink!.length,
-              itemBuilder: (context, index) {
-                return InkWell(
-                  onTap: () {
-                    print('button is preesd$index');
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => ShowVideos(
-                            urls: _controllerlink![index],
+        title: Text("Videos gallery"),
+      ),
+      body: Column(
+        children: [
+          Expanded(
+            child: FutureBuilder<List<Model>>(
+              future: fetchlist,
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
+                  List<Model> mydata = snapshot.data!;
+
+                  return GridView.builder(
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2),
+                    itemCount: mydata.length,
+                    itemBuilder: (context, index) {
+                      return InkWell(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => pageviewExample(
+                                    index: index, mydata: mydata),
+                              ));
+                        },
+                        child: Container(
+                          margin: EdgeInsets.all(5),
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                                image: NetworkImage(
+                                    '${mydata[index].fileThumb}',
+                                    scale: 0.1),
+                                fit: BoxFit.cover),
                           ),
-                        ));
-                  },
-                  child: Container(
-                      padding: EdgeInsets.all(10),
-                      margin: EdgeInsets.all(5),
-                      decoration: BoxDecoration(
-                          color: Colors.amberAccent,
-                          borderRadius: BorderRadius.circular(20)),
-                      child: Text(
-                        "Video ${index + 1}",
-                        textAlign: TextAlign.start,
-                      )),
-                );
+                        ),
+                      );
+                    },
+                  );
+                  // return ListView.builder(
+                  //   physics: ScrollPhysics(
+                  //       parent: AlwaysScrollableScrollPhysics()),
+                  //   scrollDirection: Axis.vertical,
+                  //   shrinkWrap: true,
+                  //   itemCount: mydata.length,
+                  //   itemBuilder: (context, index) {
+                  //     return Container(
+                  //       margin: EdgeInsets.all(10),
+                  //       child: Row(
+                  //         children: [
+                  //           Image.network(
+                  //             '${mydata[index].fileThumb}',
+                  //             scale: 2.0,
+                  //             height: 200,
+                  //           ),
+                  //           Padding(
+                  //             padding: const EdgeInsets.only(
+                  //                 bottom: 100, left: 50),
+                  //             child: Column(
+                  //               children: [
+                  //                 Text(
+                  //                   "Status no: ${index + 1}",
+                  //                   style: TextStyle(
+                  //                     fontSize: 18,
+                  //                     fontWeight: FontWeight.w600,
+                  //                     color:
+                  //                         Color.fromARGB(255, 173, 108, 10),
+                  //                   ),
+                  //                 ),
+                  //                 TextButton(
+                  //                     onPressed: () {
+                  //                       Navigator.push(
+                  //                           context,
+                  //                           MaterialPageRoute(
+                  //                               builder: (context) => ShowVideos(
+                  //                                   urls: VideoPlayerController
+                  //                                       .network(mydata[index]
+                  //                                           .fileName
+                  //                                           .toString()))));
+                  //                     },
+                  //                     child: Text("View Status")),
+                  //               ],
+                  //             ),
+                  //           ),
+                  //         ],
+                  //       ),
+                  //     );
+                  //   },
+                  // );
+                } else if (snapshot.hasError) {}
+                return Center(child: CircularProgressIndicator());
               },
-            )),
-          ],
-        ),
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -124,8 +213,10 @@ class videosa extends StatelessWidget {
 // }
 
 class ShowVideos extends StatefulWidget {
-  var urls;
-  ShowVideos({super.key, required this.urls});
+  List<Model>? mydata = [];
+  int? index;
+
+  ShowVideos({super.key, this.mydata, required this.index});
 
   @override
   State<ShowVideos> createState() => _ShowVideosState();
@@ -133,26 +224,17 @@ class ShowVideos extends StatefulWidget {
 
 class _ShowVideosState extends State<ShowVideos> {
   VideoPlayerController? _controller;
+  bool playVideo = true;
 
-  bool playVideo = false;
+  List<String?>? fetchdatalist;
+
   @override
   void initState() {
+    print("---widget index---->${widget.index}");
+    print("---widget lengh---->${widget.mydata!.length}");
+    // print(">Fetch List of index>>>>${widget.mydata![num].fileName}");
+
     super.initState();
-
-    _controller = widget.urls;
-
-    _controller!.addListener(() {
-      setState(() {});
-    });
-    _controller!.dataSourceType;
-    print("<<<<<<<<${_controller!.dataSourceType}>>>>>>");
-    _controller!.setLooping(true);
-    _controller!.initialize();
-    if (playVideo == false) {
-      _controller!.pause();
-    } else {
-      _controller!.play();
-    }
   }
 
   @override
@@ -164,43 +246,58 @@ class _ShowVideosState extends State<ShowVideos> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 121, 93, 12),
-      ),
-      body: Column(
-        children: [
-          SizedBox(
-            height: 30,
-          ),
-          ConstrainedBox(
-            constraints: BoxConstraints(
-              maxHeight: 420,
-              maxWidth: double.infinity,
-            ),
-            child: VideoPlayer(
-              _controller!,
-            ),
-          ),
-          VideoProgressIndicator(
-            _controller!,
-            allowScrubbing: true,
-          ),
-          TextButton(
-              onPressed: () {
-                playVideo == false ? _controller!.play() : _controller!.pause();
+        appBar: AppBar(
+          backgroundColor: Color.fromARGB(255, 121, 93, 12),
+        ),
+        body: ListView.builder(
+          shrinkWrap: true,
+          scrollDirection: Axis.vertical,
+          itemCount: widget.mydata!.length,
+          itemBuilder: (context, index) {
+            _controller =
+                VideoPlayerController.network(widget.mydata![index].fileName!);
+            print("checkitem_${widget.mydata![index].fileName!}");
+            print("----1c------${num}");
+            _controller!.initialize();
+            _controller!.pause();
+            return Column(
+              children: [
+                ConstrainedBox(
+                  constraints: const BoxConstraints(
+                    maxHeight: 200,
+                    maxWidth: 280,
+                  ),
+                  child: VideoPlayer(_controller!),
+                ),
+                GestureDetector(
+                  onTap: () {},
+                  child: VideoProgressIndicator(
+                    _controller!,
+                    allowScrubbing: true,
+                  ),
+                ),
+                SizedBox(
+                  height: 30,
+                ),
+                // TextButton(
+                //     onPressed: () {
+                //       playVideo == false
+                //           ? _controller!.play()
+                //           : _controller!.pause();
 
-                setState(() {
-                  playVideo = !playVideo;
-                });
+                //       setState(() {
+                //         playVideo = !playVideo;
+                //       });
 
-                print('-----------------button cllik');
-              },
-              child: Icon(
-                playVideo == false ? Icons.play_arrow : Icons.pause,
-                color: Colors.black,
-              )),
-        ],
-      ),
-    );
+                //       print('-----------------button cllik');
+                //     },
+                //     child: Icon(
+                //       playVideo == false ? Icons.play_arrow : Icons.pause,
+                //       color: Colors.black,
+                //     )),
+              ],
+            );
+          },
+        ));
   }
 }
