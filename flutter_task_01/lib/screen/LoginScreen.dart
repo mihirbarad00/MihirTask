@@ -1,8 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
-import 'package:sizer/sizer.dart';
-
 class LoginScreen extends StatefulWidget {
   LoginScreen({super.key});
 

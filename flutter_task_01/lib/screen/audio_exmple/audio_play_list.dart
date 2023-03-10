@@ -1,5 +1,8 @@
+import 'dart:async';
+
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_task_01/screen/audio_exmple/audio_plyer.dart';
 
 class audio_list extends StatefulWidget {
   const audio_list({super.key});
@@ -10,14 +13,27 @@ class audio_list extends StatefulWidget {
 
 class _audio_listState extends State<audio_list> {
   AudioPlayer player = AudioPlayer();
-  bool isPlayAudio = false;
+  //bool isPlayAudio = false;
   List audiobook = [
     'audio1.mp3',
     'audio2.mp3',
     'audio3.mp3',
     'audio2.mp3',
   ];
+
   List<bool> isPlayAudi = [false, false, false, false];
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    player.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -80,46 +96,46 @@ class _audio_listState extends State<audio_list> {
   }
 }
 
-class audiosplayers extends StatefulWidget {
-  var url;
-  audiosplayers({super.key, @required this.url});
+// class audiosplayers extends StatefulWidget {
+//   var url;
+//   audiosplayers({super.key, @required this.url});
 
-  @override
-  State<audiosplayers> createState() => _audiosplayersState();
-}
+//   @override
+//   State<audiosplayers> createState() => _audiosplayersState();
+// }
 
-class _audiosplayersState extends State<audiosplayers> {
-  AudioPlayer player = AudioPlayer();
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    player.play(AssetSource(widget.url));
-  }
+// class _audiosplayersState extends State<audiosplayers> {
+//   AudioPlayer player = AudioPlayer();
+//   @override
+//   void initState() {
+//     // TODO: implement initState
+//     super.initState();
+//     player.play(AssetSource(widget.url));
+//   }
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(),
-        body: Container(
-          margin: EdgeInsets.all(10),
-          //    decoration: BoxDecoration(color: Colors.amber),
-          child: Center(
-              child: Row(
-            children: [
-              IconButton(
-                onPressed: () async {
-                  setState(() {
-                    player.pause();
-                  });
-                },
-                icon: Icon(
-                  Icons.pause,
-                  size: 30,
-                ),
-              ),
-            ],
-          )),
-        ));
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//         appBar: AppBar(),
+//         body: Container(
+//           margin: EdgeInsets.all(10),
+//           //    decoration: BoxDecoration(color: Colors.amber),
+//           child: Center(
+//               child: Row(
+//             children: [
+//               IconButton(
+//                 onPressed: () async {
+//                   setState(() {
+//                     player.pause();
+//                   });
+//                 },
+//                 icon: Icon(
+//                   Icons.pause,
+//                   size: 30,
+//                 ),
+//               ),
+//             ],
+//           )),
+//         ));
+//   }
+// }
