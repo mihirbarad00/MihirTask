@@ -1,5 +1,8 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_task_01/screen/model.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:video_player/video_player.dart';
 
 class pageviewExample extends StatefulWidget {
@@ -21,16 +24,25 @@ class _pageviewExampleState extends State<pageviewExample> {
 
   @override
   void initState() {
+    print("God APK Versin 1.1.");
     selectedIndex = widget.index!;
     _controller =
         VideoPlayerController.network(widget.mydata![selectedIndex].fileName!);
+    _controller!.addListener(() {
+      if (_controller!.value.hasError) {
+        print(
+            'Video player encountered an error: ${_controller!.value.errorDescription}');
+      }
+    });
     _controller!.initialize();
-    _controller!.pause();
+    _controller!.play();
+
     super.initState();
   }
 
   @override
   void dispose() {
+    _controller!.dispose();
     super.dispose();
   }
 
@@ -47,36 +59,74 @@ class _pageviewExampleState extends State<pageviewExample> {
         controller: _pagecontroller,
         scrollDirection: Axis.vertical,
         itemBuilder: (context, index) {
-          return Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              ConstrainedBox(
-                constraints: const BoxConstraints(
-                  maxHeight: 280,
-                  maxWidth: double.infinity,
-                ),
-                child: VideoPlayer(_controller!),
-              ),
-              VideoProgressIndicator(
-                _controller!,
-                allowScrubbing: true,
-              ),
-            ],
-          );
+          return _controller!.value.isInitialized &&
+                  !_controller!.value.hasError
+              ? AspectRatio(
+                  aspectRatio: _controller!.value.aspectRatio,
+                  child: VideoPlayer(_controller!),
+                )
+              : Center(
+                  child: CircularProgressIndicator(
+                  color: Colors.amber,
+                ));
+          // ConstrainedBox(
+          //   constraints: const BoxConstraints(
+          //     maxHeight: 380,
+          //     maxWidth: double.infinity,
+          //   ),
+          //   child: VideoPlayer(
+          //     _controller!,
+          //   ),
+          // ),
         },
         onPageChanged: (value) {
-          // _curruntPage = value;
-          // print("_curruntPage:--- $_curruntPage");
-          // print("value:--- $value");
-
+          _controller!.removeListener(() {
+            satState() {}
+          });
           if (value > _curruntPage) {
             selectedIndex++;
             print("Increament $selectedIndex");
+
+            print("SetState on--- $_controller");
+
             _controller = VideoPlayerController.network(
-                widget.mydata![selectedIndex].fileName!);
-            _controller?.initialize().whenComplete(() => setState(() {
+                widget.mydata![selectedIndex].fileName!)
+              ..initialize().whenComplete(() {
+                _controller!.play();
+                setState(() {
                   _controller;
-                }));
+                });
+              });
+
+            // _controller!.addListener(() {
+            //   if (_controller!.value.hasError == true) {
+            //     setState(() {
+            //       _controller = VideoPlayerController.network(
+            //           widget.mydata![selectedIndex].fileName!)
+            //         ..initialize().whenComplete(() => setState(() {
+            //               _controller!.play();
+            //               _controller!;
+            //             }));
+            //     });
+            //     Fluttertoast.showToast(
+            //         msg: "could not load media",
+            //         gravity: ToastGravity.BOTTOM,
+            //         backgroundColor: Color.fromARGB(255, 255, 17, 0),
+            //         textColor: Color.fromARGB(255, 231, 224, 224),
+            //         fontSize: 15.0);
+            //   }
+            // });
+            if (selectedIndex >= 9) {
+              setState(() {
+                selectedIndex = 0;
+              });
+
+              print("Increament over tha 10 $selectedIndex");
+            } else if (selectedIndex <= 0) {
+              setState(() {
+                selectedIndex = 0;
+              });
+            }
           } else {
             selectedIndex--;
             print("decrement $selectedIndex");
@@ -88,22 +138,6 @@ class _pageviewExampleState extends State<pageviewExample> {
           }
 
           _curruntPage = value;
-
-          // print(selectedIndex);
-          // print(value);
-
-          // _controller = VideoPlayerController.network(
-          //     widget.mydata![selectedIndex].fileName!);
-
-          // setState(() {
-          //   print("Check Is :$selectedIndex");
-
-          //   selectedIndex = value;
-          //   if (selectedIndex! >= 11) {
-          //     selectedIndex = 0;
-          //   }
-          //   print("Check Is :$selectedIndex");
-          // });
         },
       ),
     );

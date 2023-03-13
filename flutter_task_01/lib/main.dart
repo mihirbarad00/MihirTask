@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_task_01/pageviewExmple.dart';
 
-import 'screen/audio_exmple/audio_play_list.dart';
-import 'screen/audio_exmple/audio_plyer.dart';
-import 'screen/video_exmpale.dart';
+import 'package:flutter_task_01/pageviewExmple.dart';
+import 'package:flutter_task_01/screen/ApiExample/dio_exmaple.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,6 +16,6 @@ class MyApp extends StatelessWidget {
           useMaterial3: false,
         ),
         debugShowCheckedModeBanner: false,
-        home: videosa());
+        home: DioEExmaple());
   }
 }
