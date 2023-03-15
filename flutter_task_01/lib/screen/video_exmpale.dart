@@ -5,7 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:video_player/video_player.dart';
 import 'package:http/http.dart' as http;
 
-import '../pageviewExmple.dart';
+import 'pageviewExmple.dart';
 import 'model.dart';
 
 Future<List<Model>> getData() async {
@@ -33,7 +33,6 @@ class _videosaState extends State<videosa> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     fetchlist = getData();
   }
