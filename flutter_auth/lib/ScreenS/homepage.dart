@@ -13,13 +13,8 @@ class _homepageState extends State<homepage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-          child: ElevatedButton.icon(
-              onPressed: () {
-                FirebaseAuth.instance.signOut();
-              },
-              icon: Icon(Icons.logout),
-              label: Text("Logout"))),
-    );
+        body: Center(
+      child: Text("Abcd"),
+    ));
   }
 }

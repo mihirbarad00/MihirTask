@@ -89,7 +89,7 @@ class _formsState extends State<forms> {
                     child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
                           minimumSize: Size(00, 50),
-                          backgroundColor: Color.fromARGB(255, 51, 52, 116),
+                          primary: Color.fromARGB(255, 51, 52, 116),
                         ),
                         onPressed: () {
                           setState(() {

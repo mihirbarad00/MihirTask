@@ -36,7 +36,7 @@ class _DatePickerState extends State<DatePicker> {
           children: [
             ElevatedButton.icon(
                 icon: Icon(Icons.date_range),
-                style: ElevatedButton.styleFrom(backgroundColor: Colors.brown),
+                style: ElevatedButton.styleFrom(primary: Colors.brown),
                 onPressed: () {
                   DatePickerMethod();
                 },

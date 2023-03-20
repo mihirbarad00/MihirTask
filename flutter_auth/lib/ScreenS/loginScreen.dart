@@ -19,24 +19,59 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   TextEditingController _numberController = TextEditingController();
   FirebaseAuth _auth = FirebaseAuth.instance;
-  GoogleSignIn _googleSignIn = GoogleSignIn();
 
-  fbLoginMethod() async {
-    final LoginResult result = await FacebookAuth.instance.login();
+  GoogleSignIn _googleSignIn = GoogleSignIn();
+  Map<String, dynamic>? _userData;
+
+  String welcome = "Facebook";
+  Future<UserCredential> signInWithFacebook() async {
+    final LoginResult result =
+        await FacebookAuth.instance.login(permissions: ['email']);
 
     if (result.status == LoginStatus.success) {
-      final AccessToken accessToken = result.accessToken!;
+      final userData = await FacebookAuth.instance.getUserData().then(
+        (value) {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => homepage(),
+              ));
+        },
+      );
 
-      Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => homepage(),
-          ));
+      _userData = userData;
     } else {
-      print(result.status);
       print(result.message);
     }
+
+    setState(() {
+      welcome = _userData?['email'];
+    });
+
+    final OAuthCredential facebookAuthCredential =
+        FacebookAuthProvider.credential(result.accessToken!.token);
+
+    return FirebaseAuth.instance.signInWithCredential(facebookAuthCredential);
   }
+  // fbLoginMethod() async {
+  //   final LoginResult result = await FacebookAuth.instance
+  //       .login(loginBehavior: LoginBehavior.deviceAuth, permissions: ['email']);
+
+  //   if (result.status == LoginStatus.success) {
+  //     final AccessToken accessToken = result.accessToken!;
+  //     print("Login Success ${LoginStatus.success}");
+  //     print("Login Success ${result.status}");
+
+  //     Navigator.push(
+  //         context,
+  //         MaterialPageRoute(
+  //           builder: (context) => homepage(),
+  //         ));
+  //   } else {
+  //     print(result.status);
+  //     print(result.message);
+  //   }
+  // }
 
   SignInWithGoogle() async {
     final GoogleSignInAccount? googleUser =
@@ -99,7 +134,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           context,
                           MaterialPageRoute(
                             builder: (context) => OTPSCREEN(
-                              phoneNumber: verificationId,
+                              VerificationToken: verificationId,
                             ),
                           ));
                     },
@@ -141,7 +176,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   InkWell(
                     onTap: () {
-                      fbLoginMethod();
+                      signInWithFacebook();
                     },
                     child: Container(
                       child: Image.network(

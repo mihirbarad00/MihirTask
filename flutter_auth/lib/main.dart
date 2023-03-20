@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_auth/ScreenS/loginScreen.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'FirebaseFireStore/homeUI.dart';
+import 'ScreenS/homepage.dart';
 import 'firebase_options.dart';
 
 // ...
@@ -20,8 +22,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(debugShowCheckedModeBanner: false, home: LoginScreen()
-        //AuthService().handleAuthState(),
-        );
+    return MaterialApp(debugShowCheckedModeBanner: false, home: HomePage());
   }
 }

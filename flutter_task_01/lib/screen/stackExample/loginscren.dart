@@ -64,7 +64,7 @@ class _LoginScrenState extends State<LoginScren> {
                       controller: userController,
                       decoration: InputDecoration(
                           errorText: userValidation ? "Enter Vaild name" : null,
-                          prefixIcon: Icon(Icons.person_2_outlined),
+                          prefixIcon: Icon(Icons.person),
                           focusedBorder: InputBorder.none,
                           border: null,
                           enabledBorder: InputBorder.none),

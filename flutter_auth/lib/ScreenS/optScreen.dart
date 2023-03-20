@@ -5,8 +5,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'homepage.dart';
 
 class OTPSCREEN extends StatefulWidget {
-  String? phoneNumber;
-  OTPSCREEN({super.key, this.phoneNumber});
+  String? VerificationToken;
+  OTPSCREEN({super.key, this.VerificationToken});
 
   @override
   State<OTPSCREEN> createState() => _OTPSCREENState();
@@ -20,7 +20,8 @@ class _OTPSCREENState extends State<OTPSCREEN> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    print('PhoneNnumber Const..${widget.phoneNumber}');
+
+    print('PhoneNnumber Const..${widget.VerificationToken}');
   }
 
   @override
@@ -61,7 +62,7 @@ class _OTPSCREENState extends State<OTPSCREEN> {
                   try {
                     PhoneAuthCredential phoneAuthCredential =
                         PhoneAuthProvider.credential(
-                            verificationId: widget.phoneNumber!,
+                            verificationId: widget.VerificationToken!,
                             smsCode: smscode!);
 
                     await _auth
