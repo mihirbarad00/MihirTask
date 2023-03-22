@@ -11,6 +11,7 @@ import 'package:connectivity_plus_web/connectivity_plus_web.dart';
 import 'package:file_picker/_internal/file_picker_web.dart';
 import 'package:fluttertoast/fluttertoast_web.dart';
 import 'package:image_picker_for_web/image_picker_for_web.dart';
+import 'package:package_info_plus_web/package_info_plus_web.dart';
 import 'package:video_player_web/video_player_web.dart';
 import 'package:wakelock_web/wakelock_web.dart';
 
@@ -23,6 +24,7 @@ void registerPlugins(Registrar registrar) {
   FilePickerWeb.registerWith(registrar);
   FluttertoastWebPlugin.registerWith(registrar);
   ImagePickerPlugin.registerWith(registrar);
+  PackageInfoPlugin.registerWith(registrar);
   VideoPlayerPlugin.registerWith(registrar);
   WakelockWeb.registerWith(registrar);
   registrar.registerMessageHandler();

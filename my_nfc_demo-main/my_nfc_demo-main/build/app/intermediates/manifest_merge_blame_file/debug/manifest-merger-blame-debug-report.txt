@@ -13,11 +13,11 @@
 13         to allow setting breakpoints, to provide hot reload, etc.
 14    -->
 15    <uses-permission android:name="android.permission.INTERNET" />
-15-->C:\Users\admin\Downloads\my_nfc_demo-main\my_nfc_demo-main\android\app\src\main\AndroidManifest.xml:4:5-66
-15-->C:\Users\admin\Downloads\my_nfc_demo-main\my_nfc_demo-main\android\app\src\main\AndroidManifest.xml:4:22-64
+15-->D:\MihirTask\my_nfc_demo-main\my_nfc_demo-main\android\app\src\main\AndroidManifest.xml:4:5-66
+15-->D:\MihirTask\my_nfc_demo-main\my_nfc_demo-main\android\app\src\main\AndroidManifest.xml:4:22-64
 16    <uses-permission android:name="android.permission.NFC" />
-16-->C:\Users\admin\Downloads\my_nfc_demo-main\my_nfc_demo-main\android\app\src\main\AndroidManifest.xml:3:5-61
-16-->C:\Users\admin\Downloads\my_nfc_demo-main\my_nfc_demo-main\android\app\src\main\AndroidManifest.xml:3:22-59
+16-->D:\MihirTask\my_nfc_demo-main\my_nfc_demo-main\android\app\src\main\AndroidManifest.xml:3:5-61
+16-->D:\MihirTask\my_nfc_demo-main\my_nfc_demo-main\android\app\src\main\AndroidManifest.xml:3:22-59
 17
 18    <application
 19        android:name="android.app.Application"
@@ -60,13 +60,13 @@
 55            android:value="2" />
 56
 57        <activity
-57-->[:url_launcher_android] C:\Users\admin\Downloads\my_nfc_demo-main\my_nfc_demo-main\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:10:9-13:74
+57-->[:url_launcher_android] D:\MihirTask\my_nfc_demo-main\my_nfc_demo-main\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:10:9-13:74
 58            android:name="io.flutter.plugins.urllauncher.WebViewActivity"
-58-->[:url_launcher_android] C:\Users\admin\Downloads\my_nfc_demo-main\my_nfc_demo-main\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:11:13-74
+58-->[:url_launcher_android] D:\MihirTask\my_nfc_demo-main\my_nfc_demo-main\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:11:13-74
 59            android:exported="false"
-59-->[:url_launcher_android] C:\Users\admin\Downloads\my_nfc_demo-main\my_nfc_demo-main\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:12:13-37
+59-->[:url_launcher_android] D:\MihirTask\my_nfc_demo-main\my_nfc_demo-main\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:12:13-37
 60            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
-60-->[:url_launcher_android] C:\Users\admin\Downloads\my_nfc_demo-main\my_nfc_demo-main\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:13:13-71
+60-->[:url_launcher_android] D:\MihirTask\my_nfc_demo-main\my_nfc_demo-main\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:13:13-71
 61
 62        <uses-library
 62-->[androidx.window:window:1.0.0-beta04] C:\Users\admin\.gradle\caches\transforms-3\49bc944d29f70d45aa5add8e43e3247e\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:25:9-27:40

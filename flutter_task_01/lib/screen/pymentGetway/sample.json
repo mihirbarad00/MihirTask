@@ -1,0 +1,42 @@
+{
+    "key": "NTZmNWIwNGZhODc1MmUyY2YxOTM5NmM0",
+    "events": [],
+    "context": {
+        "mode": "live",
+        "device": {
+            "manufacturer": "Xiaomi",
+            "model": "Mi A1",
+            "name": "tissot_sprout",
+            "type": "phone",
+            "version": "Android9",
+            "Xiaomi": "Xiaomi",
+            "Mi A1": "Mi A1",
+            "device_size": "1080w X 1920h",
+            "device_resolution": "1080x1920x480"
+        },
+        "sdk": {
+            "version": "1.6.10",
+            "type": "checkout"
+        },
+        "network": {
+            "bluetooth": false,
+            "carrier": "",
+            "cellular": false,
+            "cellular_network_type": "NA",
+            "wifi": false,
+            "carrier_network": "",
+            "network_type": -1,
+            "ip_address": "106.215.32.88",
+            "is_roming": false
+        },
+        "screen": {
+            "density": 3,
+            "width": 1080,
+            "height": 1920
+        },
+        "locale": "en-US",
+        "timezone": "Asia\/Kolkata",
+        "user_agent": "Dalvik\/2.1.0 (Linux; U; Android 9; Mi A1 MIUI\/V10.0.24.0.PDHMIXM)",
+        "webview_user_agent": "Mozilla\/5.0 (Linux; Android 9; Mi A1 Build\/PKQ1.180917.001; wv) AppleWebKit\/537.36 (KHTML, like Gecko) Version\/4.0 Chrome\/111.0.5563.58 Mobile Safari\/537.36"
+    }
+}

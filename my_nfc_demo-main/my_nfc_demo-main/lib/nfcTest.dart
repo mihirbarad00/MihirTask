@@ -114,16 +114,7 @@ class NfcTest extends StatelessWidget {
                     "NFC (near-field communication), is a short-range(depending on hardware, usually around 3 cm–5 cm) wireless technology that allows your phone to act as a transit pass or a credit card, speedily transfer data, or instantly connect with Bluetooth devices like headphones or speakers.",
                     textAlign: TextAlign.justify,
                     style: TextStyle(
-                        fontSize: 16, color: Color.fromARGB(255, 74, 98, 117)),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(right: 20, left: 20, top: 80),
-                  child: Text(
-                    "Version 1.0.0",
-                    textAlign: TextAlign.justify,
-                    style: TextStyle(
-                        fontSize: 16, color: Color.fromARGB(255, 74, 98, 117)),
+                        fontSize: 14, color: Color.fromARGB(255, 74, 98, 117)),
                   ),
                 ),
               ],

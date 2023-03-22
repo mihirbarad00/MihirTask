@@ -5,11 +5,11 @@ import 'package:nfc_manager/nfc_manager.dart';
 
 import 'TEst1.dart';
 
-bool isNfcAvailable = false;
+bool isNfcAvailable = true;
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized(); // Required for the line below
-  isNfcAvailable = await NfcManager.instance.isAvailable();
+  // WidgetsFlutterBinding.ensureInitialized(); // Required for the line below
+  // isNfcAvailable = await NfcManager.instance.isAvailable();
   runApp(const MyApp());
 }
 

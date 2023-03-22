@@ -1,4 +1,4 @@
-#Tue Mar 21 17:01:05 IST 2023
-base.0=C\:\\Users\\admin\\Downloads\\my_nfc_demo-main\\my_nfc_demo-main\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
+#Wed Mar 22 11:45:45 IST 2023
+base.0=D\:\\MihirTask\\my_nfc_demo-main\\my_nfc_demo-main\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
 renamed.0=classes.dex
 path.0=classes.dex

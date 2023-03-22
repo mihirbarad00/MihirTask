@@ -7,6 +7,7 @@ import 'package:flutter_task_01/screen/future&Stream/StreamBuilders.dart';
 
 import 'package:flutter_task_01/screen/pageviewExmple.dart';
 import 'package:flutter_task_01/screen/ApiExample/dio_exmaple.dart';
+import 'package:flutter_task_01/screen/pymentGetway/Rozarpays.dart';
 import 'package:flutter_task_01/screen/video_exmpale.dart';
 
 void main() {
@@ -22,6 +23,6 @@ class MyApp extends StatelessWidget {
           useMaterial3: false,
         ),
         debugShowCheckedModeBanner: false,
-        home: Send_Data());
+        home: Payments());
   }
 }

@@ -1,27 +1,8 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\admin\\Downloads\\my_nfc_demo-main\\my_nfc_demo-main\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
+            "outputFile": "D:\\MihirTask\\my_nfc_demo-main\\my_nfc_demo-main\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
             "map": [
-                {
-                    "source": "C:\\Users\\admin\\Downloads\\my_nfc_demo-main\\my_nfc_demo-main\\android\\app\\src\\main\\res\\values\\styles.xml",
-                    "from": {
-                        "startLines": "3,14",
-                        "startColumns": "4,4",
-                        "startOffsets": "173,818",
-                        "endLines": "7,16",
-                        "endColumns": "12,12",
-                        "endOffsets": "476,982"
-                    },
-                    "to": {
-                        "startLines": "94,99",
-                        "startColumns": "4,4",
-                        "startOffsets": "5505,5813",
-                        "endLines": "98,101",
-                        "endColumns": "12,12",
-                        "endOffsets": "5808,5977"
-                    }
-                },
                 {
                     "source": "C:\\Users\\admin\\.gradle\\caches\\transforms-3\\49bc944d29f70d45aa5add8e43e3247e\\transformed\\jetified-window-1.0.0-beta04\\res\\values\\values.xml",
                     "from": {
@@ -39,6 +20,25 @@
                         "endLines": "7,8,9,10,72,122,126,278,295,303",
                         "endColumns": "11,59,51,44,59,24,24,24,24,24",
                         "endOffsets": "289,349,401,446,4387,7292,7489,16611,17725,18118"
+                    }
+                },
+                {
+                    "source": "D:\\MihirTask\\my_nfc_demo-main\\my_nfc_demo-main\\android\\app\\src\\main\\res\\values\\styles.xml",
+                    "from": {
+                        "startLines": "3,14",
+                        "startColumns": "4,4",
+                        "startOffsets": "173,818",
+                        "endLines": "7,16",
+                        "endColumns": "12,12",
+                        "endOffsets": "476,982"
+                    },
+                    "to": {
+                        "startLines": "94,99",
+                        "startColumns": "4,4",
+                        "startOffsets": "5505,5813",
+                        "endLines": "98,101",
+                        "endColumns": "12,12",
+                        "endOffsets": "5808,5977"
                     }
                 },
                 {
